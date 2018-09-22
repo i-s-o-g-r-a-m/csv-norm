@@ -10,6 +10,7 @@ import pendulum
 
 
 # TODO increase test coverage (ran out of time)
+# TODO make this a proper Python package for easier installation and usage
 # TODO add docstrings
 
 
