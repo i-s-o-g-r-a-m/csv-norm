@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+command -v pipenv > /dev/null
+if [[ $? -ne 0 ]]
+then
+    echo "Aborting, cannot find pipenv on the PATH"
+    exit 1
+fi
+
+CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null && pwd)"
+CSV_NORM_DIR="$(dirname $CURRENT_DIR)/csv_norm"
+
+pipenv run python "$CSV_NORM_DIR/csv_norm.py"
