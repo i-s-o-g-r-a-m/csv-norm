@@ -9,7 +9,7 @@ from typing import Any, Dict, Generator
 import pendulum
 
 
-# TODO add more tests
+# TODO increase test coverage (ran out of time)
 # TODO add docstrings
 
 

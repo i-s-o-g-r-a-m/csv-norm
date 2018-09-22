@@ -11,8 +11,17 @@ normalization will be attempted. If the CSV is parseable but data is encountered
 that cannot be normalized, `WARNING`s will be written to `stderr`, and the row in
 question will be dropped from the output.
 
-Example usage:
+#### Usage
 
 ```bash
-cat ~/sample.csv | bin/csv-norm > ~/sample-normalized.csv
+cat sample.csv | $PATH_TO_REPO/bin/csv-norm > sample-normalized.csv
+```
+
+#### Tests
+
+You can run the tests from the top of the repo:
+
+```bash
+pipenv install --dev
+pipenv run pytest
 ```
