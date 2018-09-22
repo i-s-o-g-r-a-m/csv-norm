@@ -70,7 +70,7 @@ def normalize(csv_reader: CsvDictReader) -> Generator[Dict, None, None]:
             transform = transforms.get(col)
             try:
                 if col == "TotalDuration":
-                    norm_row[col] = norm_row["FooDuration"] * norm_row["BarDuration"]
+                    norm_row[col] = norm_row["FooDuration"] + norm_row["BarDuration"]
                 else:
                     norm_row[col] = transform(val) if transform else val
             except:
