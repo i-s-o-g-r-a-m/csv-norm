@@ -9,7 +9,7 @@ from typing import Any, Dict, Generator
 import pendulum
 
 
-# TODO add tests
+# TODO add more tests
 # TODO add docstrings
 
 
@@ -85,19 +85,17 @@ def normalize(csv_reader: CsvDictReader) -> Generator[Dict, None, None]:
             yield norm_row
 
 
-def main() -> None:
-    sys.stdin.reconfigure(encoding=DEFAULT_ENCODING, errors="replace")
-    sys.stdout.reconfigure(encoding=DEFAULT_ENCODING)
-
-    csv_reader = CsvDictReader(sys.stdin)
+def main(input_file, output_file) -> None:
+    csv_reader = CsvDictReader(input_file)
     if not csv_reader.fieldnames:
         raise ValueError("Could not parse input CSV data")
-
-    csv_writer = CsvDictWriter(sys.stdout, fieldnames=csv_reader.fieldnames)
+    csv_writer = CsvDictWriter(output_file, fieldnames=csv_reader.fieldnames)
     csv_writer.writeheader()
     for row in normalize(csv_reader):
         csv_writer.writerow(row)
 
 
 if __name__ == "__main__":
-    main()
+    sys.stdin.reconfigure(encoding=DEFAULT_ENCODING, errors="replace")
+    sys.stdout.reconfigure(encoding=DEFAULT_ENCODING)
+    main(input_file=sys.stdin, output_file=sys.stdout)
