@@ -89,7 +89,9 @@ def main(input_file, output_file) -> None:
     csv_reader = CsvDictReader(input_file)
     if not csv_reader.fieldnames:
         raise ValueError("Could not parse input CSV data")
-    csv_writer = CsvDictWriter(output_file, fieldnames=csv_reader.fieldnames)
+    csv_writer = CsvDictWriter(
+        output_file, fieldnames=csv_reader.fieldnames, lineterminator="\n"
+    )
     csv_writer.writeheader()
     for row in normalize(csv_reader):
         csv_writer.writerow(row)
